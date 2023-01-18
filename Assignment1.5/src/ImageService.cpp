@@ -3,11 +3,12 @@
 #include <string>
 #include <time.h>
 #include <unistd.h>
+#include <filesystem>
 
 int main(int argc, char** argv) {
     std::string filepath = "./image-service.txt";
-    std::string imagepath = "./images/";
-    std::string imageext = ".jpg";
+    std::string imagepath = std::filesystem::absolute("images/");
+    std::string imageext = ".png";
     std::string input;
 
     while(true) {
@@ -17,17 +18,18 @@ int main(int argc, char** argv) {
         inputStream.close();
         
         if(input != "") {
-            std::cout << "here";
-            std::string randImgPath = imagepath + input + imageext;
             std::ofstream outputStream(filepath, std::ios::out | std::ios::trunc);
-            outputStream << randImgPath;
-            std::cout << randImgPath;
+            outputStream << imagepath << input << imageext;
             outputStream.close();
-            usleep(20000);
+
+            std::cout << imagepath << input << imageext << std::endl;
+            usleep(50000);
 
             std::ofstream clearStream(filepath, std::ios::out | std::ios::trunc);
             clearStream << "";
             clearStream.close();
         }
+        
+        usleep(1000);
     }
 }

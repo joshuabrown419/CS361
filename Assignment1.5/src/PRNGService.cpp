@@ -7,7 +7,7 @@
 int main(int argc, char** argv) {
     std::string filepath = "./prng-service.txt";
     std::string input;
-    int max = 5;
+    int max = 1040;
 
     srand((unsigned) time(NULL));
 
@@ -18,11 +18,14 @@ int main(int argc, char** argv) {
         inputStream.close();
         
         if(input == "run") {
-            int randNumb = rand() / (RAND_MAX / max);
+            int randNumb = rand() / (RAND_MAX / max) + 1;
             std::ofstream outputStream(filepath, std::ios::out | std::ios::trunc);
+            std::cout << randNumb << std::endl;
             outputStream << randNumb;
             outputStream.close();
             usleep(20000);
         }
+
+        usleep(1000);
     }
 }
