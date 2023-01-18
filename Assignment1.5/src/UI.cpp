@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
         ofs->close();
         delete ofs;
 
-        usleep(10000);
+        usleep(4000000);
 
         prn.clear();
         ifs = new std::ifstream(prng_path, std::ios::in);
@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
         ofs->close();
         delete ofs;
 
-        usleep(10000);
+        usleep(3000000);
 
         image_path.clear();
         ifs = new std::ifstream(image_service_path, std::ios::in);

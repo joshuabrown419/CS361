@@ -18,6 +18,7 @@ int main(int argc, char** argv) {
         inputStream.close();
         
         if(input == "run") {
+            usleep(2000000);
             int randNumb = rand() / (RAND_MAX / max) + 1;
             std::ofstream outputStream(filepath, std::ios::out | std::ios::trunc);
             std::cout << randNumb << std::endl;

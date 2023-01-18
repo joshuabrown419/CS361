@@ -18,12 +18,13 @@ int main(int argc, char** argv) {
         inputStream.close();
         
         if(input != "") {
+            usleep(2000000);
             std::ofstream outputStream(filepath, std::ios::out | std::ios::trunc);
             outputStream << imagepath << input << imageext;
             outputStream.close();
 
             std::cout << imagepath << input << imageext << std::endl;
-            usleep(50000);
+            usleep(2000000);
 
             std::ofstream clearStream(filepath, std::ios::out | std::ios::trunc);
             clearStream << "";
